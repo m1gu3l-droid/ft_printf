@@ -6,7 +6,7 @@
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:52:49 by fnovais-          #+#    #+#             */
-/*   Updated: 2022/12/06 23:34:01 by fnovais-         ###   ########.fr       */
+/*   Updated: 2022/12/07 15:31:52 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int					ft_putnbr_base(long long int nbr);
 int					ft_putnbr_ubase(long long int nbr);
 int					ft_putptr(unsigned long long int n);
 int					ft_printf(const char *str, ...);
-int					ft_itoa(int n);
+int					ft_itoa(int n, int size);
 size_t				ft_strlen(const char *s);
 
 #endif

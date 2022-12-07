@@ -6,45 +6,55 @@
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:52:56 by fnovais-          #+#    #+#             */
-/*   Updated: 2022/12/06 18:27:32 by fnovais-         ###   ########.fr       */
+/*   Updated: 2022/12/07 15:32:40 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+int	ft_sort(va_list ptr, char str)
+{
+	int	size;
+	int	len_itoa;
+
+	size = 0;
+	len_itoa = 0;
+	if (str == 'c')
+		size += ft_putchar((va_arg(ptr, int)));
+	if (str == 's')
+		size += ft_putstr((va_arg(ptr, char *)));
+	if (str == 'p')
+		size += ft_putptr((va_arg(ptr, unsigned long long int)));
+	if (str == 'd' || str == 'i')
+		size += ft_itoa((va_arg(ptr, int)), len_itoa);
+	if (str == 'u')
+		size += ft_putnbr_unsigned((va_arg(ptr, unsigned int)));
+	if (str == 'x')
+		size += ft_putnbr_base((va_arg(ptr, unsigned int)));
+	if (str == 'X')
+		size += ft_putnbr_ubase((va_arg(ptr, unsigned int)));
+	if (str == '%')
+		size += write(1, "%", 1);
+	return (size);
+}
+
 int	ft_printf(const char *str, ...)
 {
 	int		i;
-	int		size;
+	int		len;
 	va_list	ptr;
 
-	i = -1;
-	size = 0;
+	i = 0;
+	len = 0;
 	va_start(ptr, str);
-	while (str[++i] != '\0')
+	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
-		{
-			i++;
-			if (str[i] == 'c')
-				size += ft_putchar((va_arg(ptr, int)));
-			if (str[i] == 's')
-				size += ft_putstr((va_arg(ptr, char *)));
-			if (str[i] == 'p')
-				size += ft_putptr((va_arg(ptr, unsigned long long int)));
-			if (str[i] == 'd' || str[i] == 'i')
-				size += ft_itoa((va_arg(ptr, int)));
-			if (str[i] == 'u')
-				size += ft_putnbr_unsigned((va_arg(ptr, unsigned int)));
-			if (str[i] == 'x')
-				size += ft_putnbr_base((va_arg(ptr, unsigned int)));
-			if (str[i] == 'X')
-				size += ft_putnbr_ubase((va_arg(ptr, unsigned int)));
-			if (str[i] == '%')
-				size += write(1, "%", 1);
-		}
+			len += ft_sort(ptr, str[++i]);
 		else
-			size += ft_putchar(str[i]);
+			len += ft_putchar(str[i]);
+		i++;
 	}
-	return (size);
+	va_end(ptr);
+	return (len);
 }
