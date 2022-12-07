@@ -86,5 +86,11 @@ int	main(void)
 	ft_printf("f size %%: %d\n", size);
 	origin = printf("Hello, %% world!\n");
 	printf("o size %%: %d\n\n", origin);
+
+	printf("FLAG MIX\n");
+	size = ft_printf("Hello, %c %s %p %d %i %u %x %X %% world!\n", d, str, ptr, i, i, umax, i, i);
+	ft_printf("f size MIX: %d\n", size);
+	origin = printf("Hello, %c %s %p %d %i %u %x %X %% world!\n", d, str, ptr, i, i, umax, i, i);
+	printf("o size MIX: %d\n\n", origin);
 	return (0);
 }
