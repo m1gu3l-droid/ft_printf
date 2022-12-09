@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int	size_of_int(int n)
+int	size_of_int(int n)
 {
 	int	i;
 

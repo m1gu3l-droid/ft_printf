@@ -18,34 +18,35 @@ int	main(void)
 	int				i;
 	int				size;
 	int				origin;
-	unsigned int	umax;
+	long long int	umax;
 	char			d;
 	char			*str = "1234567890";
 	void			*ptr;
 
-	i = -99;
-	umax = UINT_MAX;
+	i = 0;
+	ptr = &i;
+	umax = LONG_MIN;
 	d = 'X';
 
-	printf("FLAG 0\n");
-	size = ft_printf("Hello, world!\n");
-	printf("f size: %d\n", size);
-	origin = printf("Hello, world!\n");
-	printf("o size: %d\n\n", origin);
-
-	printf("FLAG C\n");
-	size = ft_printf("Hello, %cth world!\n", d);
-	printf("f size c: %d\n", size);
-	origin = printf("Hello, %cth world!\n", d);
-	printf("o size c: %d\n\n", origin);
-
-	printf("FLAG S\n");
-	size = ft_printf("Hello, %s world!\n", str);
-	ft_printf("f size s: %d\n", size);
-	origin = printf("Hello, %s world!\n", str);
-	printf("o size s: %d\n\n", origin);
-
-	printf("FLAG P\n");
+//	printf("FLAG 0\n");
+//	size = ft_printf("Hello, world!\n");
+//	printf("f size: %d\n", size);
+//	origin = printf("Hello, world!\n");
+//	printf("o size: %d\n\n", origin);
+//
+//	printf("FLAG C\n");
+//	size = ft_printf("Hello, %cth world!\n", d);
+//	printf("f size c: %d\n", size);
+//	origin = printf("Hello, %cth world!\n", d);
+//	printf("o size c: %d\n\n", origin);
+//
+//	printf("FLAG S\n");
+//	size = ft_printf("Hello, %s world!\n", str);
+//	ft_printf("f size s: %d\n", size);
+//	origin = printf("Hello, %s world!\n", str);
+//	printf("o size s: %d\n\n", origin);
+//
+//	printf("FLAG P\n");
 	size = ft_printf("Hello, %p world!\n", ptr);
 	ft_printf("f size p: %d\n", size);
 	origin = printf("Hello, %p world!\n", ptr);
@@ -66,19 +67,19 @@ int	main(void)
 	printf("FLAG U\n");
 	size = ft_printf("Hello, %u world!\n", umax);
 	ft_printf("f size u: %d\n", size);
-	origin = printf("Hello, %u world!\n", umax);
+	origin = printf("Hello, %llu world!\n", umax);
 	printf("o size u: %d\n\n", origin);
 
 	printf("FLAG x\n");
-	size = ft_printf("Hello, %xth world!\n", i);
+	size = ft_printf("Hello, %xth world!\n", umax);
 	ft_printf("f size x: %d\n", size);
-	origin = printf("Hello, %xth world!\n", i);
+	origin = printf("Hello, %llxth world!\n", umax);
 	printf("o size x: %d\n\n", origin);
 
 	printf("FLAG X\n");
-	size = ft_printf("Hello, %Xth world!\n", i);
+	size = ft_printf("Hello, %Xth world!\n", umax);
 	ft_printf("f size X: %d\n", size);
-	origin = printf("Hello, %Xth world!\n", i);
+	origin = printf("Hello, %llXth world!\n", umax);
 	printf("o size X: %d\n\n", origin);
 
 	printf("FLAG %%\n");
@@ -90,7 +91,7 @@ int	main(void)
 	printf("FLAG MIX\n");
 	size = ft_printf("Hello, %c %s %p %d %i %u %x %X %% world!\n", d, str, ptr, i, i, umax, i, i);
 	ft_printf("f size MIX: %d\n", size);
-	origin = printf("Hello, %c %s %p %d %i %u %x %X %% world!\n", d, str, ptr, i, i, umax, i, i);
+	origin = printf("Hello, %c %s %p %d %i %llu %x %X %% world!\n", d, str, ptr, i, i, umax, i, i);
 	printf("o size MIX: %d\n\n", origin);
 	return (0);
 }

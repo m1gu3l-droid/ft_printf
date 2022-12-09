@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr_lowhexa.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 20:32:45 by fnovais-          #+#    #+#             */
-/*   Updated: 2022/09/01 22:33:12 by fnovais-         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:36:17 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_ubase(long long int nbr)
+int	ft_putnbr_lowerhexa(unsigned long long nbr)
 {
 	int		size;
 	char	*base;
 
 	size = 0;
-	base = "0123456789ABCDEF";
-	if (nbr < 0)
-	{
-		size = write(1, "-", 1);
-		nbr *= -1;
-	}
+	base = "0123456789abcdef";
 	if (nbr >= 16)
 	{
-		size += ft_putnbr_ubase((nbr / 16));
-		size += ft_putnbr_ubase((nbr % 16));
+		size += ft_putnbr_lowerhexa((nbr / 16));
+		size += ft_putnbr_lowerhexa((nbr % 16));
 	}
 	else
 		size += ft_putchar(base[nbr]);
