@@ -12,20 +12,23 @@
 
 #include "ft_printf.h"
 
-int	ft_putnbr(long long n)
+unsigned int	ft_putnbr(long long n)
 {
-	int	size;
+	unsigned int	nbr;
+	unsigned int	size;
 
 	size = 0;
 	if (n < 0)
 	{
 		size += ft_putchar('-');
-		n *= -1;
+		nbr = n * -1;
 	}
+	else
+		nbr = (unsigned int)n;
 	if (n >= 10)
 	{
-		size += ft_putnbr(n / 10);
+		size += ft_putnbr(nbr / 10);
 	}
-	size += ft_putchar((n % 10 + 48));
+	size += ft_putchar((char)(nbr % 10 + 48));
 	return (size);
 }

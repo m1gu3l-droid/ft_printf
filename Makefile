@@ -18,8 +18,8 @@ RM = rm -f
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_printf.c ft_strlen.c ft_putnbr_lowhexa.c ft_putnbr_upperhexa.c ft_putnbr.c \
-	ft_putchar.c ft_putstr.c ft_putnbr_unsigned.c ft_putptr.c
+SRC = ft_printf.c ft_strlen.c ft_putnbr_base.c ft_putnbr_ubase.c ft_putnbr.c \
+	ft_putchar.c ft_putstr.c ft_itoa.c ft_putnbr_unsigned.c ft_putptr.c
 
 OBJ = $(SRC:.c=.o)
 

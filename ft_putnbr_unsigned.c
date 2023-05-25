@@ -12,7 +12,18 @@
 
 #include "ft_printf.h"
 
-int	ft_putnbr_unsigned(unsigned int n)
+unsigned int	ft_putnbr_unsigned(long long n)
 {
-	return (ft_putnbr(n));
+	unsigned int	nbr;
+	unsigned int	size;
+
+	size = 0;
+	if (n < 0)
+	{
+		nbr = (4294967295 - n) + 1;
+		size = ft_putnbr(nbr);
+	}
+	else
+		size = ft_putnbr(n);
+	return (size);
 }

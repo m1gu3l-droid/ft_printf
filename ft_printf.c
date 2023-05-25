@@ -6,7 +6,7 @@
 /*   By: fnovais- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 17:52:56 by fnovais-          #+#    #+#             */
-/*   Updated: 2022/12/09 18:40:19 by fnovais-         ###   ########.fr       */
+/*   Updated: 2022/12/07 15:32:40 by fnovais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 int	ft_sort(va_list ptr, char str)
 {
 	int	size;
+	int	len_itoa;
 
 	size = 0;
+	len_itoa = 0;
 	if (str == 'c')
 		size += ft_putchar((va_arg(ptr, int)));
 	if (str == 's')
@@ -24,13 +26,13 @@ int	ft_sort(va_list ptr, char str)
 	if (str == 'p')
 		size += ft_putptr((va_arg(ptr, unsigned long long)));
 	if (str == 'd' || str == 'i')
-		size += ft_putnbr((va_arg(ptr, int)));
+		size += ft_itoa((va_arg(ptr, int)), len_itoa);
 	if (str == 'u')
-		size += ft_putnbr_unsigned((va_arg(ptr, unsigned int)));
+		size += ft_putnbr_unsigned((va_arg(ptr, unsigned long long)));
 	if (str == 'x')
-		size += ft_putnbr_lowhexa((va_arg(ptr, unsigned int)));
+		size += ft_putnbr_base((va_arg(ptr, long long)));
 	if (str == 'X')
-		size += ft_putnbr_upperhexa((va_arg(ptr, unsigned int)));
+		size += ft_putnbr_ubase((va_arg(ptr, long long)));
 	if (str == '%')
 		size += write(1, "%", 1);
 	return (size);
